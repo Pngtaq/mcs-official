@@ -1,5 +1,5 @@
 import Navigation from "../../components/Navigation";
-import TopPage from "../../components/home/TopPage";
+import TopPage from "../../components/home/topPage";
 function Home() {
   return (
     <div>

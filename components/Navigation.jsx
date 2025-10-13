@@ -10,7 +10,7 @@ const Navigation = () => {
         <li>
           <Link to="/">News</Link>
         </li>
-        <li className="text-2xl text-[#fdc835]">
+        <li className="text-2xl text-[#fdc835] flex items-center">
           <Link to="/">MCS</Link>
         </li>
         <li>
