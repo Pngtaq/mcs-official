@@ -3,7 +3,7 @@ import TopPage from "../../components/home/topPage";
 function Home() {
   return (
     <div>
-      <div className="bg-[#FDFCFB] rounded-b-[60px] sm:rounded-b-[140px] flex flex-col pb-20 lg:pb-0">
+      <div className="bg-white rounded-b-[60px] sm:rounded-b-[140px] flex flex-col pb-20 lg:pb-0 2xl:h-screen ">
         <Navigation />
         <TopPage />
       </div>

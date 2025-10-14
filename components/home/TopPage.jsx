@@ -5,9 +5,9 @@ const TopPage = () => {
   const [activeService, setActiveService] = useState("accounting");
 
   return (
-    <div>
+    <div className="flex flex-col justify-between items-center h-full">
       <h1
-        className="text-center px-2 md:px-10 sm:px-5 lg:px-25 sm:pb-7 pb-10 pt-4 font-bold"
+        className="text-center px-2 md:px-10 sm:px-5 lg:px-15 2xl:px-40 sm:pb-7 pb-10 pt-4 font-bold"
         style={{ fontSize: "clamp(1rem, 5.3vw, 5.3rem)" }}
       >
         {serviceData[activeService].title}
