@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Navigation = () => {
   return (
     <nav className="w-full flex justify-center pt-5">
-      <ul className="border-gray border-2 flex bg-[#303030] justify-between w-3/4 px-7 py-4 rounded-full items-center text-[#d4d4d4] text-sm">
+      <ul className="border-gray border-2 flex bg-[#303030] justify-between w-full sm:w-1/2 px-7 rounded-full items-center text-[#d4d4d4] text-sm py-2">
         <li>
           <Link to="/services">Services</Link>
         </li>{" "}
@@ -11,7 +11,9 @@ const Navigation = () => {
           <Link to="/">News</Link>
         </li>
         <li className="text-2xl text-[#fdc835] flex items-center">
-          <Link to="/">MCS</Link>
+          <Link to="/">
+            <img src="/logo.png" className="w-15" />
+          </Link>
         </li>
         <li>
           <Link to="/founder">Founder</Link>
