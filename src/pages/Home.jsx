@@ -1,3 +1,4 @@
+import Footer from "../../components/Footer";
 import Navigation from "../../components/Navigation";
 import MiddlePage from "../../components/home/MiddlePage";
 import TopPage from "../../components/home/topPage";
@@ -9,9 +10,8 @@ function Home() {
         <TopPage />
       </div>
 
-      <div>
-        <MiddlePage />
-      </div>
+      <MiddlePage />
+      <Footer />
     </div>
   );
 }
