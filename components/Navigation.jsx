@@ -8,7 +8,7 @@ const Navigation = () => {
           <Link to="/services">Services</Link>
         </li>{" "}
         <li>
-          <Link to="/">News</Link>
+          <Link to="/news">News</Link>
         </li>
         <li className="text-2xl text-[#fdc835] flex items-center">
           <Link to="/">
