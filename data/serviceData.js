@@ -16,3 +16,10 @@ export const serviceData = {
     achievement: "In Printing Industry",
   },
 };
+
+export const servicesData = [
+  {
+    service: "Sole Propietorship",
+    image: "solo.jpg",
+  },
+];
