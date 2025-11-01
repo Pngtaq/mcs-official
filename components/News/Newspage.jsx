@@ -21,7 +21,7 @@ export default function Owner() {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      <NewsSection owner={ownerData} />
+      <NewsSection/>
       <Footer />
     </div>
   );
