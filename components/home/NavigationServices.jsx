@@ -1,10 +1,23 @@
-const NavigationServices = ({ serviceName, index, isActive, onSelect }) => {
+import { motion } from "framer-motion";
+
+const NavigationServices = ({
+  serviceName,
+  index,
+  isActive,
+  onSelect,
+  delay = 0,
+}) => {
   const handleClick = () => {
     onSelect(serviceName);
   };
 
   return (
-    <button
+    <motion.button
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: delay + 0.8 }}
+      whileHover={{ scale: 1.02, x: 5 }}
+      whileTap={{ scale: 0.98 }}
       onClick={handleClick}
       className={`group relative text-left py-3 sm:py-4 px-4 sm:px-6 rounded-xl sm:rounded-2xl transition-all duration-500 border overflow-hidden w-full ${
         isActive
@@ -50,7 +63,7 @@ const NavigationServices = ({ serviceName, index, isActive, onSelect }) => {
           />
         </svg>
       </div>
-    </button>
+    </motion.button>
   );
 };
 
