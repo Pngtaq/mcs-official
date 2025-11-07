@@ -73,16 +73,31 @@ const ContactForm = ({ serviceName, onClose }) => {
               onClick={onClose}
               className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 hover:bg-white/10 rounded-full transition-colors group"
             >
-              <svg className="w-6 h-6 text-gray-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg
+                className="w-6 h-6 text-gray-400 group-hover:text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
             <div className="relative">
               <span className="inline-block px-3 py-1 bg-[#fdc835]/20 border border-[#fdc835]/40 rounded-full text-[#fdc835] text-sm font-semibold mb-3">
                 {serviceName}
               </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">Let's Work Together</h2>
-              <p className="text-gray-400">Fill out the form below and we'll get back to you within 24 hours.</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">
+                Let's Work Together
+              </h2>
+              <p className="text-gray-400">
+                Fill out the form below and we'll get back to you within 24
+                hours.
+              </p>
             </div>
           </div>
 
@@ -90,7 +105,10 @@ const ContactForm = ({ serviceName, onClose }) => {
           <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-6">
             {/* Name */}
             <div>
-              <label htmlFor="name" className="block text-sm font-semibold text-gray-300 mb-2">
+              <label
+                htmlFor="name"
+                className="block text-sm font-semibold text-gray-300 mb-2"
+              >
                 Full Name <span className="text-[#fdc835]">*</span>
               </label>
               <input
@@ -108,7 +126,10 @@ const ContactForm = ({ serviceName, onClose }) => {
             {/* Email & Phone */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-semibold text-gray-300 mb-2"
+                >
                   Email Address <span className="text-[#fdc835]">*</span>
                 </label>
                 <input
@@ -124,7 +145,10 @@ const ContactForm = ({ serviceName, onClose }) => {
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-semibold text-gray-300 mb-2">
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-semibold text-gray-300 mb-2"
+                >
                   Phone Number
                 </label>
                 <input
@@ -141,7 +165,10 @@ const ContactForm = ({ serviceName, onClose }) => {
 
             {/* Company */}
             <div>
-              <label htmlFor="company" className="block text-sm font-semibold text-gray-300 mb-2">
+              <label
+                htmlFor="company"
+                className="block text-sm font-semibold text-gray-300 mb-2"
+              >
                 Company/Business Name
               </label>
               <input
@@ -157,7 +184,10 @@ const ContactForm = ({ serviceName, onClose }) => {
 
             {/* Message */}
             <div>
-              <label htmlFor="message" className="block text-sm font-semibold text-gray-300 mb-2">
+              <label
+                htmlFor="message"
+                className="block text-sm font-semibold text-gray-300 mb-2"
+              >
                 Message <span className="text-[#fdc835]">*</span>
               </label>
               <textarea
@@ -179,8 +209,18 @@ const ContactForm = ({ serviceName, onClose }) => {
                 animate={{ opacity: 1, y: 0 }}
                 className="p-4 bg-green-500/20 border border-green-500/40 rounded-xl text-green-300 flex items-center gap-3"
               >
-                <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-5 h-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
                 <span>Message sent successfully! We'll be in touch soon.</span>
               </motion.div>
@@ -192,8 +232,18 @@ const ContactForm = ({ serviceName, onClose }) => {
                 animate={{ opacity: 1, y: 0 }}
                 className="p-4 bg-red-500/20 border border-red-500/40 rounded-xl text-red-300 flex items-center gap-3"
               >
-                <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg
+                  className="w-5 h-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
                 <span>Something went wrong. Please try again.</span>
               </motion.div>
@@ -207,17 +257,42 @@ const ContactForm = ({ serviceName, onClose }) => {
             >
               {isSubmitting ? (
                 <>
-                  <svg className="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  <svg
+                    className="animate-spin h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
                   </svg>
                   <span>Sending...</span>
                 </>
               ) : (
                 <>
                   <span>Send Message</span>
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
                   </svg>
                 </>
               )}

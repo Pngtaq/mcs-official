@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const ServicesContent = ({ serviceData, serviceName }) => {
   const navigate = useNavigate();
-  
+
   if (!serviceData) return null;
 
   const handleGetStarted = () => {
@@ -161,7 +161,7 @@ const ServicesContent = ({ serviceData, serviceName }) => {
               </div>
             </div>
 
-            <button 
+            <button
               onClick={handleGetStarted}
               className="mt-4 sm:mt-6 w-full bg-gradient-to-r from-[#fdc835] to-[#fdb835] text-gray-900 font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-lg sm:rounded-xl hover:shadow-lg hover:shadow-[#fdc835]/50 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-2 group text-sm sm:text-base"
             >

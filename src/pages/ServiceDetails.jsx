@@ -10,7 +10,7 @@ const ServiceDetails = () => {
   const { serviceName } = useParams();
   const navigate = useNavigate();
   const [showContactForm, setShowContactForm] = useState(false);
-  
+
   // Decode the service name from URL
   const decodedServiceName = decodeURIComponent(serviceName);
   const serviceData = getServiceData(decodedServiceName);
@@ -19,7 +19,9 @@ const ServiceDetails = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">Service Not Found</h1>
+          <h1 className="text-4xl font-bold text-white mb-4">
+            Service Not Found
+          </h1>
           <button
             onClick={() => navigate("/")}
             className="px-6 py-3 bg-[#fdc835] text-gray-900 rounded-lg font-semibold hover:bg-[#fdb835] transition-colors"
@@ -34,7 +36,7 @@ const ServiceDetails = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black">
       <Navigation />
-      
+
       {/* Hero Section */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -58,8 +60,18 @@ const ServiceDetails = () => {
               onClick={() => navigate("/")}
               className="text-gray-400 hover:text-[#fdc835] transition-colors flex items-center gap-2 text-sm"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
               Back to Services
             </button>
@@ -107,25 +119,53 @@ const ServiceDetails = () => {
             <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 bg-[#fdc835]/20 rounded-lg">
-                  <svg className="w-6 h-6 text-[#fdc835]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <svg
+                    className="w-6 h-6 text-[#fdc835]"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
                   </svg>
                 </div>
-                <span className="text-sm text-gray-400 uppercase tracking-wider">Investment</span>
+                <span className="text-sm text-gray-400 uppercase tracking-wider">
+                  Investment
+                </span>
               </div>
-              <p className="text-2xl sm:text-3xl font-bold text-[#fdc835]">{serviceData.price}</p>
+              <p className="text-2xl sm:text-3xl font-bold text-[#fdc835]">
+                {serviceData.price}
+              </p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 bg-[#fdc835]/20 rounded-lg">
-                  <svg className="w-6 h-6 text-[#fdc835]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <svg
+                    className="w-6 h-6 text-[#fdc835]"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
                   </svg>
                 </div>
-                <span className="text-sm text-gray-400 uppercase tracking-wider">Timeline</span>
+                <span className="text-sm text-gray-400 uppercase tracking-wider">
+                  Timeline
+                </span>
               </div>
-              <p className="text-2xl sm:text-3xl font-bold text-white">{serviceData.duration}</p>
+              <p className="text-2xl sm:text-3xl font-bold text-white">
+                {serviceData.duration}
+              </p>
             </div>
           </motion.div>
         </div>
@@ -139,8 +179,10 @@ const ServiceDetails = () => {
         className="px-4 sm:px-8 md:px-16 lg:px-32 xl:px-40 py-16"
       >
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">What's Included</h2>
-          
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">
+            What's Included
+          </h2>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {serviceData.features.map((feature, index) => (
               <motion.div
@@ -153,12 +195,24 @@ const ServiceDetails = () => {
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 mt-1">
                     <div className="w-8 h-8 rounded-full bg-[#fdc835]/20 flex items-center justify-center group-hover:bg-[#fdc835]/30 transition-colors">
-                      <svg className="w-5 h-5 text-[#fdc835]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      <svg
+                        className="w-5 h-5 text-[#fdc835]"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
                       </svg>
                     </div>
                   </div>
-                  <p className="text-gray-200 text-lg leading-relaxed">{feature}</p>
+                  <p className="text-gray-200 text-lg leading-relaxed">
+                    {feature}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -174,17 +228,30 @@ const ServiceDetails = () => {
         className="px-4 sm:px-8 md:px-16 lg:px-32 xl:px-40 py-16"
       >
         <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#fdc835]/20 via-[#fdc835]/10 to-transparent backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-[#fdc835]/40 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Ready to Get Started?</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            Ready to Get Started?
+          </h2>
           <p className="text-lg text-gray-300 mb-8">
-            All services include a complimentary consultation. Contact our team for a personalized quote tailored to your specific business needs.
+            All services include a complimentary consultation. Contact our team
+            for a personalized quote tailored to your specific business needs.
           </p>
           <button
             onClick={() => setShowContactForm(true)}
             className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#fdc835] to-[#fdb835] text-gray-900 font-bold rounded-xl hover:shadow-lg hover:shadow-[#fdc835]/50 transition-all duration-300 hover:scale-105 active:scale-95 group"
           >
             <span className="text-lg">Contact Us Now</span>
-            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            <svg
+              className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
             </svg>
           </button>
         </div>
