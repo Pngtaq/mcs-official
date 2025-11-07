@@ -116,6 +116,7 @@ const BottomPage = () => {
             {/* Content Area */}
             <ServicesContent
               serviceData={servicesData[activeService]}
+              serviceName={activeService}
               key={activeService}
             />
           </motion.div>

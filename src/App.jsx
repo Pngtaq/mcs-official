@@ -5,6 +5,7 @@ import Services from "./pages/Services";
 import Founder from "./pages/Founder";
 import Team from "./pages/Team";
 import News from "./pages/News";
+import ServiceDetails from "./pages/ServiceDetails";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
 			<Route path="/news" element={<News />} />
             <Route path="/founder" element={<Founder />} />
             <Route path="/team" element={<Team />} />
+            <Route path="/service/:serviceName" element={<ServiceDetails />} />
           </Routes>
         </main>
       </div>
