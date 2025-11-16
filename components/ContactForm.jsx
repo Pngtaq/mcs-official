@@ -71,7 +71,8 @@ const ContactForm = ({ serviceName, onClose }) => {
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#fdc835] rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 hover:bg-white/10 rounded-full transition-colors group"
+              type="button"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 hover:bg-white/10 rounded-full transition-colors group z-10"
             >
               <svg
                 className="w-6 h-6 text-gray-400 group-hover:text-white"
