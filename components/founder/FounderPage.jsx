@@ -76,7 +76,7 @@ const ownerData = {
 
 export default function Owner() {
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen bg-white">
       <Navigation />
       <FounderSection owner={ownerData} />
       <Footer />
