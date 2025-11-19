@@ -41,19 +41,6 @@ const ServicesPage = () => {
         className="relative min-h-screen flex items-center py-8 sm:py-12 lg:py-16"
       >
         <div className="w-full rounded-3xl sm:rounded-[40px] lg:rounded-[60px] p-6 sm:p-8 md:p-10 lg:p-16 border-2 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-xl border-white/30 shadow-2xl overflow-hidden">
-          {/* Decorative gradient orbs */}
-          <motion.div
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.2, 0.3, 0.2],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute top-0 right-0 w-48 h-48 sm:w-72 sm:h-72 bg-[#fdc835] rounded-full mix-blend-multiply filter blur-3xl opacity-20"
-          />
           <motion.div
             animate={{
               scale: [1, 1.1, 1],

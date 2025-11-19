@@ -225,9 +225,10 @@ const AboutPage = () => {
                 </h3>
               </div>
               <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                To be the leading accounting and business solutions provider in
-                the region, recognized for our integrity, expertise, and
-                commitment to client success.
+                To be recognized as the most trusted and respected accounting
+                firm in the region by providing exemplary professional services
+                that contribute to clients' success which also provides healthy
+                working environment for our employees.
               </p>
             </div>
 
@@ -253,9 +254,11 @@ const AboutPage = () => {
                 </h3>
               </div>
               <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                To empower businesses with accurate financial information,
-                strategic guidance, and professional services that enable
-                growth, compliance, and long-term success.
+                To provide high standards of excellence in accounting,
+                bookkeeping, auditing and other related services to meet our
+                client needs, and contribute to their success. To maintain
+                integrity and honesty in everything we do to establish trust and
+                loyalty between employees, partners and clients.
               </p>
             </div>
           </motion.div>

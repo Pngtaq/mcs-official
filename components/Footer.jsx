@@ -90,12 +90,7 @@ export default function Footer() {
             <div className="space-y-4">
               {/* Marilao Branch */}
               <div>
-                <h5
-                  className="font-medium mb-2 text-sm"
-                  style={{ color: "#fdc835" }}
-                >
-                  📍 Marilao Branch
-                </h5>
+                <h5 className="font-medium mb-2 text-sm">📍 Marilao Branch</h5>
                 <div className="space-y-1 text-sm text-gray-300">
                   <p className="flex items-center">
                     <svg
@@ -148,12 +143,7 @@ export default function Footer() {
 
               {/* Bocaue Branch */}
               <div>
-                <h5
-                  className="font-medium mb-2 text-sm"
-                  style={{ color: "#fdc835" }}
-                >
-                  📍 Bocaue Branch
-                </h5>
+                <h5 className="font-medium mb-2 text-sm">📍 Bocaue Branch</h5>
                 <div className="space-y-1 text-sm text-gray-300">
                   <p className="flex items-center">
                     <svg
@@ -206,9 +196,9 @@ export default function Footer() {
 
               {/* Email */}
               <div className="text-sm text-gray-300">
-                <div className="flex items-center">
+                <div className="flex items-start gap-2">
                   <svg
-                    className="w-4 h-4 mr-2 flex-shrink-0"
+                    className="w-4 h-4 mt-0.5 flex-shrink-0"
                     style={{ color: "#fdc835" }}
                     fill="none"
                     stroke="currentColor"

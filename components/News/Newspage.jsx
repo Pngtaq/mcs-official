@@ -1,28 +1,87 @@
-import NewsSection from "./NewsSection";
 import Navigation from "../Navigation";
 import Footer from "../Footer";
+import { useState } from "react";
+import { useNews } from "../../hooks/useNews";
+import { formatDate } from "../../utils/dateFormatter";
+import NewsList from "./NewsList";
+import Pagination from "./Pagination";
 
-const ownerData = {
-  name: "MA. CRISTINA DE JESUS-SALVADOR",
-  title: "CPA - Founder & CEO",
-  story:
-    "Welcome to MCS Accounting & Printing Services. As a Certified Public Accountant, I founded this company with a clear mission to provide comprehensive accounting and business solutions.",
-  vision:
-    "To be the most trusted accounting and business services partner in Bulacan.",
-  achievements: [
-    "Certified Public Accountant (CPA) with 15+ years of professional experience",
-    "Successfully helped register and establish 100+ businesses in Marilao and Bocaue areas",
-    "Processed over 200+ tax returns ensuring 100% compliance with BIR regulations",
-  ],
-  photo: "/owner.jpg",
-};
+const NewsPage = () => {
+  const { news, loading, error } = useNews();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
-export default function Owner() {
+  // Calculate pagination
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentNews = news.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(news.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handlePrevious = () => {
+    if (currentPage > 1) {
+      handlePageChange(currentPage - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages) {
+      handlePageChange(currentPage + 1);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#212121]">
+        <Navigation />
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="text-white text-xl">Loading news...</div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-[#212121]">
+        <Navigation />
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="text-red-500 text-xl">Error: {error}</div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#212121]">
       <Navigation />
-      <NewsSection/>
+
+      {/* Header Section */}
+
+      {/* News List Section */}
+      <section className="py-16 bg-[#212121]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <NewsList news={currentNews} formatDate={formatDate} />
+
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+            onPrevious={handlePrevious}
+            onNext={handleNext}
+          />
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
-}
+};
+
+export default NewsPage;
