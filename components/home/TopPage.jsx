@@ -74,9 +74,9 @@ const TopPage = () => {
               src={serviceData[activeService].image}
               alt="accountant"
               className="relative"
-              initial={{ opacity: 0, scale: 0.8, rotateY: 90 }}
+              initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-              exit={{ opacity: 0, scale: 0.8, rotateY: -90 }}
+              exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
             />
           </AnimatePresence>
