@@ -12,6 +12,7 @@ export default function FounderSection({ owner }) {
                     src="/owner.jpg"
                     alt="cristina"
                     className="object-cover"
+                    loading="lazy"
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-[#fdc835] to-yellow-600 flex items-center justify-center">

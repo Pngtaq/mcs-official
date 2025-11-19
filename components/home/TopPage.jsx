@@ -124,7 +124,7 @@ const TopPage = () => {
           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
           transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
         >
-          <img src="/award.png" className="w-15" />
+          <img src="/award.png" className="w-15" loading="lazy" />
           <AnimatePresence mode="wait">
             <motion.div
               key={activeService}
@@ -140,7 +140,7 @@ const TopPage = () => {
               <p className="">{serviceData[activeService].achievement}</p>
             </motion.div>
           </AnimatePresence>
-          <img src="/award.png" className="w-15 scale-x-[-1]" />
+          <img src="/award.png" className="w-15 scale-x-[-1]" loading="lazy" />
         </motion.div>
       </div>
     </div>

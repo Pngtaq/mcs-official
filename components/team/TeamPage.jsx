@@ -25,6 +25,7 @@ const TeamPage = () => {
                       src={member.image}
                       alt={member.name}
                       className="w-full h-full object-cover object-top "
+                      loading="lazy"
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-[#fdc835] to-yellow-600 flex items-center justify-center">

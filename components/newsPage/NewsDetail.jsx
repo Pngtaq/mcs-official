@@ -118,6 +118,7 @@ const NewsDetail = () => {
                 src={news.image}
                 alt={news.title}
                 className="w-full h-96 object-cover"
+                loading="lazy"
               />
             </div>
           ) : (

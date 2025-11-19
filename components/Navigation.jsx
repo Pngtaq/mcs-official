@@ -12,7 +12,7 @@ const Navigation = () => {
         </li>
         <li className="text-2xl text-[#fdc835] flex items-center">
           <Link to="/">
-            <img src="/logo.png" className="w-15" />
+            <img src="/logo.png" className="w-15" loading="eager" />
           </Link>
         </li>
         <li>

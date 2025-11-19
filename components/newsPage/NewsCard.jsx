@@ -17,6 +17,7 @@ const NewsCard = ({ news, formatDate }) => {
               src={news.image}
               alt={news.title}
               className="w-full h-full object-cover object-center"
+              loading="lazy"
             />
           ) : (
             <div className="w-full h-full bg-gradient-to-br from-[#fdc835] to-yellow-600 flex items-center justify-center">
