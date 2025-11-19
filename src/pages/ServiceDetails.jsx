@@ -1,7 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { getServiceData } from "../../data/servicesData";
-import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import ContactForm from "../../components/ContactForm";
 import { useState } from "react";
@@ -17,8 +16,8 @@ const ServiceDetails = () => {
 
   if (!serviceData) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center">
-        <div className="text-center">
+      <div className="min-h-screen flex items-center justify-center py-8 sm:py-12 lg:py-16">
+        <div className="w-full max-w-2xl mx-auto rounded-3xl sm:rounded-[40px] lg:rounded-[60px] p-8 sm:p-12 border-2 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-xl border-white/30 shadow-2xl text-center">
           <h1 className="text-4xl font-bold text-white mb-4">
             Service Not Found
           </h1>
@@ -34,18 +33,16 @@ const ServiceDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black">
-      <Navigation />
-
+    <div className="min-h-screen py-8 sm:py-12 lg:py-16">
       {/* Hero Section */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative pt-24 pb-16 px-4 sm:px-8 md:px-16 lg:px-32 xl:px-40 overflow-hidden"
+        className="relative w-full rounded-3xl sm:rounded-[40px] lg:rounded-[60px] p-6 sm:p-8 md:p-10 lg:p-16 border-2 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-xl border-white/30 shadow-2xl overflow-hidden"
       >
         {/* Decorative background elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#fdc835] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#fdc835] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
 
         <div className="relative z-10 max-w-6xl mx-auto">
@@ -169,16 +166,9 @@ const ServiceDetails = () => {
             </div>
           </motion.div>
         </div>
-      </motion.div>
 
-      {/* Features Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-        className="px-4 sm:px-8 md:px-16 lg:px-32 xl:px-40 py-16"
-      >
-        <div className="max-w-6xl mx-auto">
+        {/* Features Section */}
+        <div className="relative z-10 mt-12 sm:mt-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">
             What's Included
           </h2>
@@ -218,42 +208,37 @@ const ServiceDetails = () => {
             ))}
           </div>
         </div>
-      </motion.div>
 
-      {/* CTA Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.9 }}
-        className="px-4 sm:px-8 md:px-16 lg:px-32 xl:px-40 py-16"
-      >
-        <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#fdc835]/20 via-[#fdc835]/10 to-transparent backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-[#fdc835]/40 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Ready to Get Started?
-          </h2>
-          <p className="text-lg text-gray-300 mb-8">
-            All services include a complimentary consultation. Contact our team
-            for a personalized quote tailored to your specific business needs.
-          </p>
-          <button
-            onClick={() => setShowContactForm(true)}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#fdc835] to-[#fdb835] text-gray-900 font-bold rounded-xl hover:shadow-lg hover:shadow-[#fdc835]/50 transition-all duration-300 hover:scale-105 active:scale-95 group"
-          >
-            <span className="text-lg">Contact Us Now</span>
-            <svg
-              className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+        {/* CTA Section */}
+        <div className="relative z-10 mt-12 sm:mt-16">
+          <div className="bg-gradient-to-br from-[#fdc835]/20 via-[#fdc835]/10 to-transparent backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-[#fdc835]/40 text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Ready to Get Started?
+            </h2>
+            <p className="text-lg text-gray-300 mb-8">
+              All services include a complimentary consultation. Contact our team
+              for a personalized quote tailored to your specific business needs.
+            </p>
+            <button
+              onClick={() => setShowContactForm(true)}
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#fdc835] to-[#fdb835] text-gray-900 font-bold rounded-xl hover:shadow-lg hover:shadow-[#fdc835]/50 transition-all duration-300 hover:scale-105 active:scale-95 group"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </button>
+              <span className="text-lg">Contact Us Now</span>
+              <svg
+                className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </motion.div>
 
