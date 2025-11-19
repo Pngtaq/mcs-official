@@ -6,7 +6,7 @@ import Services from "./pages/Services";
 import Founder from "./pages/Founder";
 import Team from "./pages/Team";
 import News from "./pages/News";
-import NewsDetail from "../components/news/NewsDetail";
+import NewsDetail from "../components/News/NewsDetail";
 
 function App() {
   return (
