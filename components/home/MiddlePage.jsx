@@ -34,7 +34,7 @@ const MiddlePage = () => {
           growing your business.
         </motion.p>
         <motion.img
-          src="/team.jpg"
+          src="/team1.jpg"
           alt="team image"
           className="grayscale hover:grayscale-0 transition-all duration-300 rounded-xl object-cover w-full h-auto aspect-video shadow-lg"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -49,12 +49,14 @@ const MiddlePage = () => {
       {/* Right Column */}
       <div className="flex flex-col justify-center ">
         <motion.img
-          src="/solo.jpg"
+          src="/solo1.jpg"
           alt="team image"
           className="grayscale hover:grayscale-0 transition-all duration-300 rounded-2xl w-full h-80 sm:h-90 md:h-100 lg:h-110 xl:h-140 object-cover aspect-square md:aspect-auto shadow-lg order-2 lg:order-1 mt-5"
-          initial={{ opacity: 0, x: 50 }}
-          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={
+            isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }
+          }
+          transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
           whileHover={{ scale: 1.02 }}
         />
         <motion.div
