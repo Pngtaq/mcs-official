@@ -21,7 +21,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://www.facebook.com/MCSAccountingSVCS"
+                href="https://www.facebook.com/mcsaccountingandprintingservices"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full transition-colors duration-300 hover:opacity-80"

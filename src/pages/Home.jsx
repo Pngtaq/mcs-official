@@ -3,6 +3,8 @@ import Navigation from "../../components/Navigation";
 import MiddlePage from "../../components/home/MiddlePage";
 import TopPage from "../../components/home/TopPage";
 import BottomPage from "../../components/home/BottomPage";
+import AboutPage from "../../components/home/AboutPage";
+
 function Home() {
   return (
     <div>
@@ -12,7 +14,9 @@ function Home() {
       </div>
 
       <MiddlePage />
+
       <BottomPage />
+      <AboutPage />
       <Footer />
     </div>
   );
