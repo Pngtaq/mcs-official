@@ -1,16 +1,10 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import NavigationServices from "./NavigationServices";
-import ServicesContent from "./ServicesContent";
+import { useNavigate } from "react-router-dom";
 import { servicesData, getServiceNames } from "../../data/servicesData";
 
 const BottomPage = () => {
+  const navigate = useNavigate();
   const serviceNames = getServiceNames();
-  const [activeService, setActiveService] = useState(serviceNames[0]);
-
-  const handleServiceChange = (serviceName) => {
-    setActiveService(serviceName);
-  };
 
   return (
     <motion.div
@@ -53,7 +47,7 @@ const BottomPage = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-8 sm:mb-10 lg:mb-12"
+            className="mb-8 sm:mb-10 lg:mb-12 text-center"
           >
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
@@ -77,7 +71,7 @@ const BottomPage = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-sm sm:text-base lg:text-lg text-gray-200 max-w-2xl leading-relaxed"
+              className="text-sm sm:text-base lg:text-lg text-gray-200 max-w-2xl leading-relaxed mx-auto"
             >
               We offer a range of creative and digital services designed to help
               your brand stand out and succeed in today's competitive market.
@@ -89,36 +83,104 @@ const BottomPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-[340px_1fr] xl:grid-cols-[400px_1fr] gap-6 sm:gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10"
           >
-            {/* Navigation Sidebar */}
-            <div className="space-y-2 sm:space-y-3">
-              <motion.h3
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-                className="text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3 sm:mb-4 px-2"
-              >
-                Select Service
-              </motion.h3>
-              {serviceNames.map((serviceName, index) => (
-                <NavigationServices
+            {serviceNames.map((serviceName, index) => {
+              const service = servicesData[serviceName];
+              return (
+                <motion.div
                   key={serviceName}
-                  serviceName={serviceName}
-                  index={index + 1}
-                  isActive={activeService === serviceName}
-                  onSelect={handleServiceChange}
-                  delay={0.1 * index}
-                />
-              ))}
-            </div>
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 * index }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="group bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:border-[#fdc835]/50 transition-all duration-300 cursor-pointer hover:shadow-xl hover:shadow-[#fdc835]/20"
+                  onClick={() =>
+                    navigate("/services", { state: { serviceName } })
+                  }
+                >
+                  {/* Service Number */}
+                  <div className="flex items-start justify-between mb-4">
+                    <span className="text-4xl font-bold text-[#fdc835]/30 group-hover:text-[#fdc835]/50 transition-colors">
+                      0{index + 1}
+                    </span>
+                    <div className="p-2 bg-[#fdc835]/20 rounded-lg group-hover:bg-[#fdc835]/30 transition-colors">
+                      <svg
+                        className="w-5 h-5 text-[#fdc835] transform group-hover:rotate-45 transition-transform duration-300"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
+                      </svg>
+                    </div>
+                  </div>
 
-            {/* Content Area */}
-            <ServicesContent
-              serviceData={servicesData[activeService]}
-              serviceName={activeService}
-              key={activeService}
-            />
+                  {/* Service Title */}
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-[#fdc835] transition-colors">
+                    {serviceName}
+                  </h3>
+
+                  {/* Service Description */}
+                  <p className="text-sm text-gray-300 mb-4 line-clamp-3">
+                    {service.description}
+                  </p>
+
+                  {/* View Details Link */}
+                  <div className="flex items-center gap-2 text-[#fdc835] text-sm font-semibold">
+                    <span>Learn More</span>
+                    <svg
+                      className="w-4 h-4 group-hover:translate-x-2 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+          {/* View All Services Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="text-center"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => navigate("/services")}
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#fdc835] to-[#fdb835] text-gray-900 font-bold py-4 px-8 rounded-xl hover:shadow-2xl hover:shadow-[#fdc835]/50 transition-all duration-300 group"
+            >
+              <span className="text-base sm:text-lg">View All Services</span>
+              <svg
+                className="w-5 h-5 group-hover:translate-x-2 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </motion.button>
           </motion.div>
         </div>
       </div>
