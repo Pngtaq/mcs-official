@@ -1,4 +1,4 @@
-import NewsPage from "../../components/News/Newspage";
+import NewsPage from "../../components/news/Newspage";
 function News() {
   return <NewsPage />;
 }
