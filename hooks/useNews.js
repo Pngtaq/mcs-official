@@ -1,33 +1,33 @@
 import { useState, useEffect } from "react";
-import { newsData } from "../data/newsData";
+import { fetchNews, fetchNewsById } from "../services/newsService";
 
-// This hook will be updated to fetch from Supabase
+// Hook for fetching all news
 export const useNews = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // TODO: Replace with Supabase fetch
-    // For now, using local data
-    const fetchNews = async () => {
-      try {
-        setLoading(true);
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 100));
-        setNews(newsData);
-        setError(null);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNews();
+    loadNews();
   }, []);
 
-  return { news, loading, error };
+  const loadNews = async () => {
+    setLoading(true);
+    const { data, error } = await fetchNews();
+
+    if (error) {
+      setError(error);
+    } else {
+      setNews(data || []);
+    }
+    setLoading(false);
+  };
+
+  const refreshNews = () => {
+    loadNews();
+  };
+
+  return { news, loading, error, refreshNews };
 };
 
 // Hook for single news item
@@ -37,26 +37,22 @@ export const useNewsItem = (id) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // TODO: Replace with Supabase fetch
-    const fetchNewsItem = async () => {
-      try {
-        setLoading(true);
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 100));
-        const item = newsData.find((n) => n.id === parseInt(id));
-        setNewsItem(item);
-        setError(null);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     if (id) {
-      fetchNewsItem();
+      loadNewsItem();
     }
   }, [id]);
+
+  const loadNewsItem = async () => {
+    setLoading(true);
+    const { data, error } = await fetchNewsById(id);
+
+    if (error) {
+      setError(error);
+    } else {
+      setNewsItem(data);
+    }
+    setLoading(false);
+  };
 
   return { newsItem, loading, error };
 };

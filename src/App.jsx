@@ -6,6 +6,9 @@ import Founder from "./pages/Founder";
 import Team from "./pages/Team";
 import News from "./pages/News";
 import NewsDetail from "../components/newsPage/NewsDetail";
+import AdminLogin from "../components/admin/AdminLogin";
+import AdminDashboard from "../components/admin/AdminDashboard";
+import ProtectedRoute from "../components/admin/ProtectedRoute";
 
 function App() {
   return (
@@ -20,6 +23,15 @@ function App() {
             <Route path="/news/:id" element={<NewsDetail />} />
             <Route path="/founder" element={<Founder />} />
             <Route path="/team" element={<Team />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route
+              path="/admin/dashboard"
+              element={
+                <ProtectedRoute>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </main>
       </div>
