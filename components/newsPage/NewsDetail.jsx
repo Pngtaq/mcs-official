@@ -14,7 +14,11 @@ const NewsDetail = () => {
       <div className="min-h-screen bg-[#212121]">
         <Navigation />
         <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="text-white text-xl">Loading...</div>
+          <div className="relative">
+            {/* Spinning circle loader */}
+            <div className="w-16 h-16 border-4 border-[#fdc835]/30 border-t-[#fdc835] rounded-full animate-spin"></div>
+            <p className="text-white text-center mt-4">Loading article...</p>
+          </div>
         </div>
         <Footer />
       </div>
