@@ -13,6 +13,25 @@ body {
   background-color: rgb(33, 33, 33);
 }
 
+/* Prevent image flashing/blinking on navigation */
+img {
+  content-visibility: auto;
+  will-change: auto;
+}
+
+img[loading="eager"] {
+  opacity: 1;
+}
+
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
 .slanted-border {
   clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
   border-radius: 30px 15px 10px 10px;

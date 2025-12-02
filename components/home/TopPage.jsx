@@ -79,7 +79,7 @@ const TopPage = () => {
           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
           transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
         >
-          <img src="/award.png" className="w-15" loading="lazy" />
+          <img src="/award.png" className="w-15" loading="lazy" style={{ contentVisibility: 'auto' }} />
           <div>
             <h3 className=" text-[#fdc835] text-2xl tracking-[5px]">★★★★★</h3>
             <p className="text-4xl tracking-[3px] font-bold">
@@ -87,7 +87,7 @@ const TopPage = () => {
             </p>
             <p className="">{serviceData.accounting.achievement}</p>
           </div>
-          <img src="/award.png" className="w-15 scale-x-[-1]" loading="lazy" />
+          <img src="/award.png" className="w-15 scale-x-[-1]" loading="lazy" style={{ contentVisibility: 'auto' }} />
         </motion.div>
       </div>
     </div>

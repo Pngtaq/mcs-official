@@ -16,7 +16,9 @@ const Navigation = () => {
               src="/logo.png"
               className="w-15"
               loading="eager"
+              fetchpriority="high"
               alt="mcs-logo"
+              style={{ contentVisibility: 'auto' }}
             />
           </Link>
         </li>
