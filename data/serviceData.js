@@ -7,14 +7,6 @@ export const serviceData = {
     years: "10 Years",
     achievement: "Top Performing Accounting Firm in Bulacan",
   },
-  printing: {
-    image: "/printing.png",
-    description:
-      "With years of expertise and a focus on quality, we provide professional printing services for all your business needs. From business cards to large-format prints, we deliver high-impact results with fast turnaround times to help your brand stand out and succeed.",
-    title: "Empowering Brands Through Printing Excellence",
-    years: "3 Years",
-    achievement: "In Printing Industry",
-  },
 };
 
 export const servicesData = [

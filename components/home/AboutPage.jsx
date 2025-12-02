@@ -97,6 +97,7 @@ const AboutPage = () => {
 
   return (
     <div
+      id="about-us"
       ref={ref}
       className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-8 md:px-16 lg:px-32 xl:px-40"
     >

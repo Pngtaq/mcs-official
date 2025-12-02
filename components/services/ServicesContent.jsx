@@ -144,15 +144,6 @@ const ServicesContent = ({ serviceData, serviceName }) => {
                 <div className="space-y-3 sm:space-y-5">
                   <div className="p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10">
                     <p className="text-xs text-gray-400 uppercase tracking-wider mb-1 sm:mb-2">
-                      Investment
-                    </p>
-                    <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#fdc835]">
-                      {serviceData.price}
-                    </p>
-                  </div>
-
-                  <div className="p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10">
-                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1 sm:mb-2">
                       Timeline
                     </p>
                     <p className="text-base sm:text-lg lg:text-xl font-semibold text-white">
