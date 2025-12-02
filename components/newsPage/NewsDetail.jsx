@@ -1,13 +1,16 @@
 import { useParams, useNavigate } from "react-router-dom";
 import Navigation from "../Navigation";
 import Footer from "../Footer";
-import { useNewsItem } from "../../hooks/useNews";
+import { useNewsContext } from "../../contexts/NewsContext";
 import { formatDate } from "../../utils/dateFormatter";
 
 const NewsDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { newsItem: news, loading, error } = useNewsItem(id);
+  const { news: allNews, loading, error } = useNewsContext();
+
+  // Find the specific news item from cached data
+  const news = allNews.find((item) => item.id === id);
 
   if (loading) {
     return (

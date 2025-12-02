@@ -1,13 +1,13 @@
 import Navigation from "../Navigation";
 import Footer from "../Footer";
 import { useState } from "react";
-import { useNews } from "../../hooks/useNews";
+import { useNewsContext } from "../../contexts/NewsContext";
 import { formatDate } from "../../utils/dateFormatter";
 import NewsList from "./NewsList";
 import Pagination from "./Pagination";
 
 const NewsPage = () => {
-  const { news, loading, error } = useNews();
+  const { news, loading, error } = useNewsContext();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
