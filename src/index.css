@@ -16,20 +16,6 @@ body {
 /* Prevent image flashing/blinking on navigation */
 img {
   content-visibility: auto;
-  will-change: auto;
-}
-
-img[loading="eager"] {
-  opacity: 1;
-}
-
-img[loading="lazy"] {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-img[loading="lazy"].loaded {
-  opacity: 1;
 }
 
 .slanted-border {
