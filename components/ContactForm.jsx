@@ -256,6 +256,13 @@ const ContactForm = ({ serviceName, onClose }) => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
+                  pattern="[0-9+\s-]*"
+                  onKeyPress={(e) => {
+                    const char = String.fromCharCode(e.which);
+                    if (!/[0-9+\s-]/.test(char)) {
+                      e.preventDefault();
+                    }
+                  }}
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#fdc835]/50 focus:bg-white/10 transition-all"
                   placeholder="+63 912 345 6789"
                 />
