@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 const ContactForm = ({ serviceName, onClose }) => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,37 @@ const ContactForm = ({ serviceName, onClose }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [canSubmit, setCanSubmit] = useState(true);
+  const [timeRemaining, setTimeRemaining] = useState(0);
+
+  // Check localStorage for last submission time
+  useEffect(() => {
+    const lastSubmitTime = localStorage.getItem("lastEmailSubmit");
+    if (lastSubmitTime) {
+      const timeSinceLastSubmit = Date.now() - parseInt(lastSubmitTime);
+      const cooldownTime = 30000; // 30 seconds
+
+      if (timeSinceLastSubmit < cooldownTime) {
+        setCanSubmit(false);
+        setTimeRemaining(
+          Math.ceil((cooldownTime - timeSinceLastSubmit) / 1000)
+        );
+      }
+    }
+  }, []);
+
+  // Countdown timer
+  useEffect(() => {
+    if (timeRemaining > 0) {
+      const timer = setTimeout(() => {
+        setTimeRemaining(timeRemaining - 1);
+        if (timeRemaining === 1) {
+          setCanSubmit(true);
+        }
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [timeRemaining]);
 
   const handleChange = (e) => {
     setFormData({
@@ -21,29 +53,68 @@ const ContactForm = ({ serviceName, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!canSubmit) {
+      setSubmitStatus({
+        type: "error",
+        message: `Please wait ${timeRemaining} seconds before sending another email.`,
+      });
+      return;
+    }
+
     setIsSubmitting(true);
+    setSubmitStatus(null);
 
-    // Simulate form submission - Replace this with your actual email service
     try {
-      // You can integrate with services like EmailJS, SendGrid, or your backend API
-      const emailData = {
-        ...formData,
-        service: serviceName,
-        timestamp: new Date().toISOString(),
-      };
+      // Send email using EmailJS
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          service: serviceName,
+          message: formData.message,
+          to_email: "macristinasalvador0926@gmail.com",
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
 
-      console.log("Form submission:", emailData);
+      // Store submission time
+      localStorage.setItem("lastEmailSubmit", Date.now().toString());
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      setSubmitStatus({
+        type: "success",
+        message: "Message sent successfully! We'll be in touch soon.",
+      });
 
-      setSubmitStatus("success");
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
+      });
+
+      // Set cooldown
+      setCanSubmit(false);
+      setTimeRemaining(30);
+
+      // Close modal after 2 seconds
       setTimeout(() => {
         onClose();
+        setSubmitStatus(null);
       }, 2000);
     } catch (error) {
-      setSubmitStatus("error");
-      console.error("Form submission error:", error);
+      console.error("Email send error:", error);
+      setSubmitStatus({
+        type: "error",
+        message:
+          "Failed to send message. Please try again or contact us directly.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -104,6 +175,33 @@ const ContactForm = ({ serviceName, onClose }) => {
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-6">
+            {/* Cooldown Warning */}
+            {!canSubmit && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-4 bg-yellow-500/20 border border-yellow-500/40 rounded-xl text-yellow-300 flex items-center gap-3"
+              >
+                <svg
+                  className="w-5 h-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span>
+                  Please wait {timeRemaining} seconds before sending another
+                  message.
+                </span>
+              </motion.div>
+            )}
+
             {/* Name */}
             <div>
               <label
@@ -204,11 +302,15 @@ const ContactForm = ({ serviceName, onClose }) => {
             </div>
 
             {/* Submit Status Messages */}
-            {submitStatus === "success" && (
+            {submitStatus && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="p-4 bg-green-500/20 border border-green-500/40 rounded-xl text-green-300 flex items-center gap-3"
+                className={`p-4 border rounded-xl flex items-center gap-3 ${
+                  submitStatus.type === "success"
+                    ? "bg-green-500/20 border-green-500/40 text-green-300"
+                    : "bg-red-500/20 border-red-500/40 text-red-300"
+                }`}
               >
                 <svg
                   className="w-5 h-5 flex-shrink-0"
@@ -216,44 +318,30 @@ const ContactForm = ({ serviceName, onClose }) => {
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
+                  {submitStatus.type === "success" ? (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  ) : (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  )}
                 </svg>
-                <span>Message sent successfully! We'll be in touch soon.</span>
-              </motion.div>
-            )}
-
-            {submitStatus === "error" && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="p-4 bg-red-500/20 border border-red-500/40 rounded-xl text-red-300 flex items-center gap-3"
-              >
-                <svg
-                  className="w-5 h-5 flex-shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-                <span>Something went wrong. Please try again.</span>
+                <span>{submitStatus.message}</span>
               </motion.div>
             )}
 
             {/* Submit Button */}
             <button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || !canSubmit}
               className="w-full py-4 bg-gradient-to-r from-[#fdc835] to-[#fdb835] text-gray-900 font-bold rounded-xl hover:shadow-lg hover:shadow-[#fdc835]/50 transition-all duration-300 hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
@@ -279,6 +367,8 @@ const ContactForm = ({ serviceName, onClose }) => {
                   </svg>
                   <span>Sending...</span>
                 </>
+              ) : !canSubmit ? (
+                <span>Wait {timeRemaining}s</span>
               ) : (
                 <>
                   <span>Send Message</span>
