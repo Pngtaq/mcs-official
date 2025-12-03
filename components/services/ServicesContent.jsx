@@ -20,7 +20,7 @@ const ServicesContent = ({ serviceData, serviceName }) => {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="bg-white/10 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 text-white border border-white/20 shadow-xl"
+          className="bg-[#1a1a1a] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 text-white border border-white/20 shadow-xl"
         >
           {/* Title Section */}
           <motion.div
